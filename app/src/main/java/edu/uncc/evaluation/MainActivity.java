@@ -27,4 +27,5 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
         //We cannot progress without creating a contact class to check our variables in #3 we will create a contact class
     }
+
 }
