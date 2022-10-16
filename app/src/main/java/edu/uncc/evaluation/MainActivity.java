@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements MainFragment.MainListener, AddContactFragment.AddContactListener {
+public class MainActivity extends AppCompatActivity implements MainFragment.MainListener, AddContactFragment.AddContactListener, DetailFragment.DetailListener { //All of our fragments and listeners that accompany them need to be called, or the main activity will not display our info correctly
 
     String mName;//Delcare the String Variable
     ArrayList<Contact> contacts = new ArrayList<>(); // We need to call our array list !! Note we need to create a contact class with appropriate variables!!!!!!
@@ -42,16 +42,18 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
 
     @Override
     public void showContactDetails(Contact contact) { //This is how our program will know to send us to our detail fragment after we click our list in our main fragment.
-//    getSupportFragmentManager().beginTransaction()
-//            .replace(R.id.containerView, DetailFragment.newInstance(contact))
-//            .addToBackStack(null)
-//            .commit();
-    }//Currently we do not have our detail fragment set up so we will leave this code commented out.
+    getSupportFragmentManager().beginTransaction()
+            .replace(R.id.containerView, DetailFragment.newInstance(contact))
+            .addToBackStack(null)
+            .commit();
+    }//Our detail fragment is created and now when the user clicks on the arrayList, they are able to pull up its details! This is also where our contact Detail's new instance is being called!
 
+    //#14 From here we will create our details fragment this will lead us to the details that we click on our array list in our main fragment
 
     @Override
-    public void addContact(Contact contact) {
-
+    public void addContact(Contact contact) { // From here well take the current contact we want and pop back to our add contacts fragment
+        this.contacts.add(contact);
+        getSupportFragmentManager().popBackStack();
     }
 
     @Override
@@ -59,8 +61,15 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
     getSupportFragmentManager().popBackStack();//From here we will pop to our back Stack, we need to do this to go back to our previous screen our mainFragment, this button is in our addContactFragment
     }
 
+    //Finally we will look into programming the final
+
     @Override
     public void gotoPickGroupFragment() {
 
+    }
+
+    @Override
+    public void goBackFromDetail() { //From here we will program our back button for our detail screen
+        getSupportFragmentManager().popBackStack();
     }
 }
