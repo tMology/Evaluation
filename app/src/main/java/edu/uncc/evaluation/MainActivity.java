@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity implements MainFragment.MainListener, AddContactFragment.AddContactListener, DetailFragment.DetailListener { //All of our fragments and listeners that accompany them need to be called, or the main activity will not display our info correctly
+//**21 we will then have every fragment and listener called in, this will conclude adding all listeners in the main activity so every button can function properly and fragment display properly
+public class MainActivity extends AppCompatActivity implements MainFragment.MainListener, AddContactFragment.AddContactListener, GroupsFragment.GroupListener ,DetailFragment.DetailListener { //All of our fragments and listeners that accompany them need to be called, or the main activity will not display our info correctly
 
     String mName;//Delcare the String Variable
     ArrayList<Contact> contacts = new ArrayList<>(); // We need to call our array list !! Note we need to create a contact class with appropriate variables!!!!!!
@@ -61,11 +61,33 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
     getSupportFragmentManager().popBackStack();//From here we will pop to our back Stack, we need to do this to go back to our previous screen our mainFragment, this button is in our addContactFragment
     }
 
-    //Finally we will look into programming the final
+    //****#18Finally we will look into programming the final GroupFragment and this will finish the practice!!!!
 
+
+    //**#22 we will get our remaining buttons to work correctly here and operate from there.
     @Override
     public void gotoPickGroupFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.containerView, new GroupsFragment())
+                .addToBackStack(null)
+                .commit();
+    }//This will make our group fragment appear where we can select our option
 
+
+
+    @Override
+    public void cancelGroupSelect() {
+        getSupportFragmentManager().popBackStack();
+    }//Our cancel button simply takes us back.
+
+    @Override
+    public void setGroupSelected(String group) {
+        //This probably is the most complicated logically, here we want to set the group based on what we select and go back to our previous screen
+        AddContactFragment fragment = (AddContactFragment) getSupportFragmentManager().findFragmentByTag("add-contact-Fragment");
+        if(fragment != null){
+            fragment.setGroupSelected(group);
+            getSupportFragmentManager().popBackStack();
+        }
     }
 
     @Override

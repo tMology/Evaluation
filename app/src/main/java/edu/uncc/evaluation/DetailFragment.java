@@ -106,7 +106,7 @@ public class DetailFragment extends Fragment {
 
     DetailListener mListener;//#16 We will need to develop an interface for DetailListener.
 
-    //#17 Then we create the onAttach
+    //**#17 Then we create the onAttach
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

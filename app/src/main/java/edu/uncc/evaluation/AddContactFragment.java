@@ -72,6 +72,14 @@ public class AddContactFragment extends Fragment {
     FragmentAddContactBinding binding; //From here our binding is declared
     String groupSelected; // Our string for our group selected is declared.
 
+    //********* NOTE I forgot to add setGroupSelected to call the group selected for this case we need this for our main activity to function properly
+
+    public void setGroupSelected(String group){
+        this.groupSelected = group;
+    }
+
+    //********* ^ NOTE I forgot to add setGroupSelected to call the group selected
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
