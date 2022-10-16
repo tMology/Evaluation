@@ -93,7 +93,7 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         binding.textViewWelcome.setText("Welcome " + mName); //From here this will make the name actually change to what we typed.
 
-        mContacts = mListener.getContactList();//********Ok, so our mListener is not working correctly here, we need to first  create an onattach and interface for this
+    /*problematic*/    mContacts = mListener.getContactsList();//********Ok, so our mListener is not working correctly here, we need to first  create an onattach and interface for this
         if(mContacts.size() == 0){
             binding.textViewContactCount.setText("You have 0 contacts");
         }   else if(mContacts.size() == 1){
@@ -129,14 +129,16 @@ public class MainFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
-        mListener = (MainListener) context;
+        /*problematic*/    mListener = (MainListener) context;
     }
 
     interface MainListener{
-        ArrayList<Contact> getContactList(); //From here were a little ahead of ourselves this is here going to send us to add contact and contact detalis this will be clarified in the buttons and each button will send us to the appropriate fragment
+        ArrayList<Contact> getContactsList(); //From here were a little ahead of ourselves this is here going to send us to add contact and contact detalis this will be clarified in the buttons and each button will send us to the appropriate fragment
         void gotoAddContact();
         void showContactDetails(Contact contact);
     }
 
 
 }//********* What is written so far, the main fragment is complete  however line 125 will not let me post into the main fragment, however this is the main code written for the main fragment and should allow the main list to display in it.
+
+//***#10 From here We will need to develop access to our add contract fragment. We will go to our main Activity and start from there

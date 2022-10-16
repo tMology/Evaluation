@@ -9,10 +9,11 @@
         android:id="@+id/textViewName"
         android:layout_width="348dp"
         android:layout_height="18dp"
+        android:layout_marginStart="31dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="31dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewPhone"
