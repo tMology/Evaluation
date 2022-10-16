@@ -41,9 +41,12 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
     }//#11 From here we will move to our addContact Fragment
 
     @Override
-    public void showContactDetails(Contact contact) {
-
-    }
+    public void showContactDetails(Contact contact) { //This is how our program will know to send us to our detail fragment after we click our list in our main fragment.
+//    getSupportFragmentManager().beginTransaction()
+//            .replace(R.id.containerView, DetailFragment.newInstance(contact))
+//            .addToBackStack(null)
+//            .commit();
+    }//Currently we do not have our detail fragment set up so we will leave this code commented out.
 
 
     @Override
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
 
     @Override
     public void cancelAddContact() {
-
+    getSupportFragmentManager().popBackStack();//From here we will pop to our back Stack, we need to do this to go back to our previous screen our mainFragment, this button is in our addContactFragment
     }
 
     @Override

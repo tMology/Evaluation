@@ -111,7 +111,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Contact contact = mContacts.get(position);
-                mListener.showContactDetails(contact);
+                mListener.showContactDetails(contact);//What is happening here is when we select from our listing in our mainActivity it will know to take this clickable element and send us to our detail fragment.
             }
         });//From here we have develpoed an clickalbe list, This allows us to set the listing and set the elements to be clickable.
 

@@ -97,7 +97,7 @@ public class AddContactFragment extends Fragment {
             public void onClick(View view) {
                 mlistener.cancelAddContact(); //#13**** Similar case here hold the phone!! We need an onAttach and interface for our mlistener!
             }
-        });//From here our Cancel Button is set.
+        });//*****From here our Cancel Button is set. However our button will not function until the cancelAddContact is mentioned in the main activity******
 
         binding.buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +113,7 @@ public class AddContactFragment extends Fragment {
                     Toast.makeText(getActivity(), "Select a group" , Toast.LENGTH_SHORT).show();
                 } else {
                     Contact contact = new Contact(name, phone, groupSelected);
-                    mlistener.addContact(contact);
+                    mlistener.addContact(contact);// Similarly here, we need to call in our addContact in the main activity for our button to function.
                 }
             }
         });//From here the Submit button will check if the user entered data into all appropriate fields...
@@ -121,7 +121,7 @@ public class AddContactFragment extends Fragment {
         binding.buttonSetDepartment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mlistener.gotoPickGroupFragment();
+                mlistener.gotoPickGroupFragment();//In the same case as our cancel button, our main activity will need to be specified so this button will function.
             }
         });//From here, this button will send us straight to our pick group fragment
 
